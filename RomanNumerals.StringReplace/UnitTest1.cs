@@ -6,10 +6,11 @@ namespace RomanNumerals.StringReplace
 {
     public class UnitTest1
     {
-        private const string TenI = "IIIIIIIIII";
+        private const string TenI  = "IIIIIIIIII";
         private const string NineI = "IIIIIIIII";
         private const string FiveI = "IIIII";
         private const string FourI = "IIII";
+        private const string FiveX = "XXXXX";
         private const string FourX = "XXXX";
 
         [Theory]
@@ -45,6 +46,7 @@ namespace RomanNumerals.StringReplace
         [InlineData(46, "XLVI")]
         [InlineData(48, "XLVIII")]
         [InlineData(49, "XLIX")]
+        [InlineData(50, "LL")]
         public void Number_should_convert_to_expected_numeral(int input, string expected)
         {
             var actual = Convert(input);
@@ -60,6 +62,7 @@ namespace RomanNumerals.StringReplace
                 .Replace(NineI, "IX")
                 .Replace(FiveI, "V")
                 .Replace(FourI, "IV")
+                .Replace(FiveX, "LL")
                 .Replace(FourX, "XL")
                 .ToString();
             return convert;
