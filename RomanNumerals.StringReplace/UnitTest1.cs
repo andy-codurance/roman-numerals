@@ -16,6 +16,19 @@ namespace RomanNumerals.StringReplace
         [InlineData(7, "VII")]
         [InlineData(8, "VIII")]
         [InlineData(9, "IX")]
+        [InlineData(10, "X")]
+        [InlineData(11, "XI")]
+        [InlineData(13, "XIII")]
+        [InlineData(14, "XIV")]
+        [InlineData(15, "XV")]
+        [InlineData(16, "XVI")]
+        [InlineData(19, "XIX")]
+        [InlineData(20, "XX")]
+        [InlineData(30, "XXX")]
+        [InlineData(33, "XXXIII")]
+        [InlineData(34, "XXXIV")]
+        [InlineData(35, "XXXV")]
+        [InlineData(36, "XXXVI")]
         public void Number_should_convert_to_expected_numeral(int input, string expected)
         {
             var actual = Convert(input);
@@ -27,6 +40,7 @@ namespace RomanNumerals.StringReplace
         {
             var convert = new StringBuilder()
                 .Append('I', input)
+                .Replace("IIIIIIIIII", "X")
                 .Replace("IIIIIIIII", "IX")
                 .Replace("IIIII", "V")
                 .Replace("IIII", "IV")
