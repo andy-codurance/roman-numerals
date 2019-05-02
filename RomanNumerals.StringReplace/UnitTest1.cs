@@ -10,7 +10,7 @@ namespace RomanNumerals.StringReplace
         public void When_it_occurs_four_times_in_a_row()
         {
             int input = 4;
-            var actual = NumberToRomanNumeralConverter.Convert(input);
+            var actual = new NumberToRomanNumeralConverter().Convert(input);
 
             string expected = "IV";
             actual.Should().Be(expected);
@@ -27,12 +27,7 @@ namespace RomanNumerals.StringReplace
         private const string FourX = "XXXX";
         private readonly StringBuilder _stringBuilder = new StringBuilder();
 
-        public static string Convert(int input)
-        {
-            return new NumberToRomanNumeralConverter().ConvertCore(input);
-        }
-
-        private string ConvertCore(int input)
+        public string Convert(int input)
         {
             var convert = _stringBuilder
                 .Clear()
@@ -50,6 +45,8 @@ namespace RomanNumerals.StringReplace
     
     public class UnitTest1
     {
+        private readonly NumberToRomanNumeralConverter converter = new NumberToRomanNumeralConverter();
+
         [Theory]
         [InlineData(1, "I")]
         [InlineData(2, "II")]
@@ -98,14 +95,9 @@ namespace RomanNumerals.StringReplace
         {
             // TODO - this is getting unmanageable - how can I be sure I don't miss a case?
             // I need to codify the rules as tests.
-            var actual = Convert(input);
+            var actual = converter.Convert(input);
 
             actual.Should().Be(expected);
-        }
-
-        private static string Convert(int input)
-        {
-            return NumberToRomanNumeralConverter.Convert(input);
         }
     }
 }
