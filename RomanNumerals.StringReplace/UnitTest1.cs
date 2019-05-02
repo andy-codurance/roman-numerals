@@ -4,6 +4,40 @@ using Xunit;
 
 namespace RomanNumerals.StringReplace
 {
+    public class Numeral_I_is_replaced
+    {
+        private const string TenI  = "IIIIIIIIII";
+        private const string NineI = "IIIIIIIII";
+        private const string FiveI = "IIIII";
+        private const string FourI = "IIII";
+        private const string FiveX = "XXXXX";
+        private const string FourX = "XXXX";
+        
+        [Fact]
+        public void When_it_occurs_four_times_in_a_row()
+        {
+            int input = 4;
+            var actual = Convert(input);
+
+            string expected = "IV";
+            actual.Should().Be(expected);
+        }
+
+        private static string Convert(int input)
+        {
+            var convert = new StringBuilder()
+                .Append('I', input)
+                .Replace(TenI, "X")
+                .Replace(NineI, "IX")
+                .Replace(FiveI, "V")
+                .Replace(FourI, "IV")
+                .Replace(FiveX, "L")
+                .Replace(FourX, "XL")
+                .ToString();
+            return convert;
+        }
+    }
+    
     public class UnitTest1
     {
         private const string TenI  = "IIIIIIIIII";
