@@ -8,6 +8,9 @@ namespace RomanNumerals.StringReplace
         [Theory]
         [InlineData(1, "I")]
         [InlineData(2, "II")]
+        [InlineData(3, "III")]
+        [InlineData(4, "IV")]
+        [InlineData(5, "V")]
         public void Number_should_convert_to_expected_numeral(int input, string expected)
         {
             var actual = Convert(input);
@@ -17,7 +20,9 @@ namespace RomanNumerals.StringReplace
 
         private static string Convert(int input)
         {
-            var convert = new string('I', input);
+            var convert = new string('I', input)
+                .Replace("IIIII", "V")
+                .Replace("IIII", "IV");
             return convert;
         }
     }
