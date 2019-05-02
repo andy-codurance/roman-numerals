@@ -46,7 +46,17 @@ namespace RomanNumerals.StringReplace
         [InlineData(46, "XLVI")]
         [InlineData(48, "XLVIII")]
         [InlineData(49, "XLIX")]
-        [InlineData(50, "LL")]
+        [InlineData(50, "L")]
+        [InlineData(51, "LI")]
+        [InlineData(52, "LII")]
+        [InlineData(53, "LIII")]
+        [InlineData(54, "LIV")]
+        [InlineData(55, "LV")]
+        [InlineData(56, "LVI")]
+        [InlineData(57, "LVII")]
+        [InlineData(58, "LVIII")]
+        [InlineData(59, "LIX")]
+        [InlineData(60, "LX")]
         public void Number_should_convert_to_expected_numeral(int input, string expected)
         {
             var actual = Convert(input);
@@ -62,7 +72,7 @@ namespace RomanNumerals.StringReplace
                 .Replace(NineI, "IX")
                 .Replace(FiveI, "V")
                 .Replace(FourI, "IV")
-                .Replace(FiveX, "LL")
+                .Replace(FiveX, "L")
                 .Replace(FourX, "XL")
                 .ToString();
             return convert;
