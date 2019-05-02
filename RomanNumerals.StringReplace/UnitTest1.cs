@@ -6,6 +6,12 @@ namespace RomanNumerals.StringReplace
 {
     public class UnitTest1
     {
+        private const string TenI = "IIIIIIIIII";
+        private const string NineI = "IIIIIIIII";
+        private const string FiveI = "IIIII";
+        private const string FourI = "IIII";
+        private const string FourX = "XXXX";
+
         [Theory]
         [InlineData(1, "I")]
         [InlineData(2, "II")]
@@ -42,11 +48,11 @@ namespace RomanNumerals.StringReplace
         {
             var convert = new StringBuilder()
                 .Append('I', input)
-                .Replace("IIIIIIIIII", "X")
-                .Replace("IIIIIIIII", "IX")
-                .Replace("IIIII", "V")
-                .Replace("IIII", "IV")
-                .Replace("XXXX", "XL")
+                .Replace(TenI, "X")
+                .Replace(NineI, "IX")
+                .Replace(FiveI, "V")
+                .Replace(FourI, "IV")
+                .Replace(FourX, "XL")
                 .ToString();
             return convert;
         }
