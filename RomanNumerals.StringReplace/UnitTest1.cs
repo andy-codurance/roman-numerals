@@ -6,26 +6,36 @@ namespace RomanNumerals.StringReplace
 {
     public class Numeral_I_is_replaced
     {
+        [Fact]
+        public void When_it_occurs_four_times_in_a_row()
+        {
+            int input = 4;
+            var actual = NumberToRomanNumeralConverter.Convert(input);
+
+            string expected = "IV";
+            actual.Should().Be(expected);
+        }
+    }
+
+    internal class NumberToRomanNumeralConverter
+    {
         private const string TenI  = "IIIIIIIIII";
         private const string NineI = "IIIIIIIII";
         private const string FiveI = "IIIII";
         private const string FourI = "IIII";
         private const string FiveX = "XXXXX";
         private const string FourX = "XXXX";
-        
-        [Fact]
-        public void When_it_occurs_four_times_in_a_row()
-        {
-            int input = 4;
-            var actual = Convert(input);
+        private readonly StringBuilder _stringBuilder = new StringBuilder();
 
-            string expected = "IV";
-            actual.Should().Be(expected);
+        public static string Convert(int input)
+        {
+            return new NumberToRomanNumeralConverter().ConvertCore(input);
         }
 
-        private static string Convert(int input)
+        private string ConvertCore(int input)
         {
-            var convert = new StringBuilder()
+            var convert = _stringBuilder
+                .Clear()
                 .Append('I', input)
                 .Replace(TenI, "X")
                 .Replace(NineI, "IX")
@@ -40,13 +50,6 @@ namespace RomanNumerals.StringReplace
     
     public class UnitTest1
     {
-        private const string TenI  = "IIIIIIIIII";
-        private const string NineI = "IIIIIIIII";
-        private const string FiveI = "IIIII";
-        private const string FourI = "IIII";
-        private const string FiveX = "XXXXX";
-        private const string FourX = "XXXX";
-
         [Theory]
         [InlineData(1, "I")]
         [InlineData(2, "II")]
@@ -102,16 +105,7 @@ namespace RomanNumerals.StringReplace
 
         private static string Convert(int input)
         {
-            var convert = new StringBuilder()
-                .Append('I', input)
-                .Replace(TenI, "X")
-                .Replace(NineI, "IX")
-                .Replace(FiveI, "V")
-                .Replace(FourI, "IV")
-                .Replace(FiveX, "L")
-                .Replace(FourX, "XL")
-                .ToString();
-            return convert;
+            return NumberToRomanNumeralConverter.Convert(input);
         }
     }
 }
