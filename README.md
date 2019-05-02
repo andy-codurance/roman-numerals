@@ -2,7 +2,7 @@
 
 Different takes on the roman numerals kata
 
-## Information
+## Rules
 
 ||||||||||
 ---|---|---|---|---|---|---|---|---
@@ -30,7 +30,7 @@ not ('CD' and 'CM' are also valid).
 
 * The 'base 5' symbols 'V', 'L' and 'D' can never be repeated.
 
-## Rules
+## Requirements
 
 Build something that can convert an Arabic number, between 1 and 3999, to its roman numeral representation.
 

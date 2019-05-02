@@ -59,6 +59,8 @@ namespace RomanNumerals.StringReplace
         [InlineData(60, "LX")]
         public void Number_should_convert_to_expected_numeral(int input, string expected)
         {
+            // TODO - this is getting unmanageable - how can I be sure I don't miss a case?
+            // I need to codify the rules as tests.
             var actual = Convert(input);
 
             actual.Should().Be(expected);
