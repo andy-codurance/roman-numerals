@@ -1,3 +1,4 @@
+using System.Text;
 using FluentAssertions;
 using Xunit;
 
@@ -20,9 +21,11 @@ namespace RomanNumerals.StringReplace
 
         private static string Convert(int input)
         {
-            var convert = new string('I', input)
+            var convert = new StringBuilder()
+                .Append('I', input)
                 .Replace("IIIII", "V")
-                .Replace("IIII", "IV");
+                .Replace("IIII", "IV")
+                .ToString();
             return convert;
         }
     }
